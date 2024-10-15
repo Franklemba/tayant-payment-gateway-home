@@ -1,0 +1,93 @@
+<section class="account-section register">
+    <div class="account-wrapper auth--page ">
+
+        <div class="account-right">
+            <div class="w-100">
+                <div class="section-title text-center">
+                    <a href="" class="logo">
+                        <img src="/images/1558572841646281442.png" alt="logo">
+                    </a>
+                    <h4 class="title mt-3 mb-0">Create an Account</h4>
+
+                </div>
+                <form class="row g-4" action="" method="POST" onsubmit="return recaptcha();">
+                    <input type="hidden" name="_token" value="DYmmDWk3R3YZr4tMhlsVcbQJRjHceMj9ZYHFtgk3">                    <div class="col-sm-6 form-group">
+                        <label class="form--label">Name</label>
+                        <input type="text" class="form-control form--control bg--section" name="name" placeholder="Enter name" required value="">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label class="form--label">Email address</label>
+                        <input type="email" class="form-control form--control bg--section" name="email" placeholder="Enter email" required value="">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label class="form--label">Country</label>
+                        <select name="country" class="form-control form--control bg--section country" required>
+                            <option value="">Select</option>
+                                                            <option value="United States" data-dial_code="+1" >United States</option>
+                                                            <option value="Germany" data-dial_code="+49" >Germany</option>
+                                                            <option value="United Kingdom" data-dial_code="+44" >United Kingdom</option>
+                                                            <option value="Nigeria" data-dial_code="+234" >Nigeria</option>
+                                                            <option value="Bangladesh" data-dial_code="+880" >Bangladesh</option>
+                                                            <option value="Japan" data-dial_code="+81" >Japan</option>
+                                                    </select>
+                    </div>
+
+                    <div class="col-sm-6 form-group">
+                         <label class="form--label">Phone No.</label>
+                        <input type="hidden" name="dial_code">
+                        <div class="input-group">
+                            <span class="input-group-text d_code"></span>
+                            <input type="text" name="phone"  class="form-control form--control bg--section" placeholder="Phone No." required value="">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 form-group">
+                        <label class="form--label">Address</label>
+                        <input type="text" name="address" value="" class="form-control form--control bg--section" placeholder="Address" required>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label class="form--label">Password</label>
+                        <div class="input-group input-group-flat">
+                            <input type="password" name="password" class="form-control form--control bg--section"  placeholder="Password"  autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label class="form--label">Confirm Password</label>
+                        <div class="input-group input-group-flat">
+                            <input type="password" name="password_confirmation" class="form-control form--control bg--section"  placeholder="Confirm Password"  autocomplete="off">
+                        </div>
+                    </div>
+                                            <div class="col-sm-12 form-group">
+                          
+                            <div data-sitekey="" class="g-recaptcha"></div>
+                            <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
+
+                                                    </div>
+                                        <div class="col-xl-12 form-group">
+                        <div class="d-flex flex-wrap justify-content-between">
+
+                            <div>
+                                <a href="/auth/login">Already have an Account ?</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 form-group">
+                        <button type="submit" class="cmn--btn">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="fixed--anime">
+    <span class="banner-elem elem1">&nbsp;</span>
+    <span class="banner-elem elem2">&nbsp;</span>
+    <span class="banner-elem elem3">&nbsp;</span>
+    <span class="banner-elem elem4">&nbsp;</span>
+    <span class="banner-elem elem5">&nbsp;</span>
+    <span class="banner-elem elem6">&nbsp;</span>
+    <span class="banner-elem elem7">&nbsp;</span>
+    <span class="banner-elem elem8">&nbsp;</span>
+    <span class="banner-elem elem9">&nbsp;</span>
+
+</div>

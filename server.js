@@ -12,7 +12,7 @@ const passport = require('passport')
 // Route definitions
 const homeRouter = require('./routes/home');
 // const userRouter = require('./routes/user');
-// const authRouter = require('./routes/auth')
+const authRouter = require('./routes/auth')
 // const reportRouter = require('./routes/reports')
 
 // const { ensureAuthenticated} = require('./config/auth');
@@ -71,7 +71,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-// app.use('/auth', authRouter);
+app.use('/auth', authRouter);
 app.use('/',homeRouter);
 // app.use('/users', userRouter);
 
