@@ -18,20 +18,20 @@ const sections = [
 
 router.get("/", (req,res) => {
 
-    res.render("pages/home",{
+    res.render("homePages/home",{
       sections
     })
 })
 
 router.get("/about", (req,res) => {
-    res.render("pages/about",{
+    res.render("homePages/about",{
         sections
       })
 })
 
 
 router.get("/apiDocumentation", (req,res) => {
-  res.render("pages/apiDocumentation",{
+  res.render("homePages/apiDocumentation",{
       // sections
     })
 })
@@ -39,14 +39,14 @@ router.get("/apiDocumentation", (req,res) => {
 
 
 router.get("/blog", (req,res) => {
-  res.render("pages/blog",{
+  res.render("homePages/blog",{
       sections
     })
 })
 
 
 router.get("/contact", (req,res) => {
-  res.render("pages/contact",{
+  res.render("homePages/contact",{
       sections
     })
 })

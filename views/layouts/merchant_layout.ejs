@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchant Dashboard</title>
+    <link rel="shortcut icon" href="path_to_favicon_image">
+    <link rel="stylesheet" href="/merchant/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/merchant/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/merchant/css/selectric.css">
+    <link rel="stylesheet" href="/merchant/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/merchant/css/select2.min.css">
+    <link rel="stylesheet" href="/merchant/css/tagify.css">
+    <link rel="stylesheet" href="/merchant/css/summernote.css">
+    <link rel="stylesheet" href="/merchant/css/bootstrap-iconpicker.min.css">
+    <link rel="stylesheet" href="/merchant/css/colorpicker.css">
+    <link rel="stylesheet" href="/merchant/css/style.css">
+    <link rel="stylesheet" href="/merchant/css/components.css">
+    <link rel="stylesheet" href="/merchant/css/custom.css">
+</head>
+<body>
+  
+<div id="app">
+    <div class="main-wrapper">
+        
+        <div class="navbar-bg"></div>
+        <%- include(`../merchant_partials/topbar`) %>
+        <div class="main-sidebar">
+            <%- include(`../merchant_partials/sidebar`) %>
+        </div>
+
+
+        <div class="main-content">
+           
+            <%- include(`../merchant_partials/breadcrumb`) %>
+            
+        
+            
+        
+            <%- body %>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="cleardb" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form action="" method="post">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Clear Database </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <p>Are You Sure To Clear Database</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger">Clear Database</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="/merchant/js/jquery.min.js"></script>
+<script src="/merchant/js/popper.min.js"></script>
+<script src="/merchant/js/bootstrap.min.js"></script>
+<script src="/merchant/js/jquery-ui.min.js"></script>
+<script src="/merchant/js/nicescroll.min.js"></script>
+<script src="/merchant/js/summernote.js"></script>
+<script src="/merchant/js/select2.min.js"></script>
+<script src="/merchant/js/tagify.js"></script>
+<script src="/merchant/js/sortable.js"></script>
+<script src="/merchant/js/moment-a.js"></script>
+<script src="/merchant/js/stisla.js"></script>
+<script src="/merchant/js/bootstrap-iconpicker.bundle.min.js"></script>
+<script src="/merchant/js/colorpicker.js"></script>
+<script src="/merchant/js/jquery.uploadpreview.min.js"></script>
+<script src="/merchant/js/chart.min.js"></script>
+<script src="/merchant/js/scripts.js"></script>
+<script src="/merchant/js/custom.js"></script>
+
+<script>
+    var form_error = "Please fill all the required fields";
+    var mainurl = "your_main_url";
+    var lang = {
+        'new': 'ADD NEW',
+        'edit': 'EDIT',
+        'details': 'DETAILS',
+        'update': 'Status Updated Successfully.',
+        'sss': 'Success !',
+        'active': 'Activated',
+        'deactive': 'Deactivated',
+        'loading': 'Please wait Data Processing...',
+        'submit': 'Submit',
+        'enter_name': 'Enter Name',
+        'enter_price': 'Enter Price',
+        'per_day': 'Per Day',
+        'per_month': 'Per Month',
+        'per_year': 'Per Year',
+        'one_time': 'One Time',
+        'enter_title': 'Enter Title',
+        'enter_content': 'Enter Content',
+        'extra_price_name': 'Enter Name',
+        'extra_price': 'Enter Price',
+        'policy_title': 'Enter Title',
+        'policy_content': 'Enter Content'
+    };
+
+    $(function(){
+        'use strict'
+        $('.reason').on('click',function(){
+          $('#modal-reason').find('.reason-text').val($(this).data('reason'))
+          $('#modal-reason').modal('show')
+        })
+    })
+
+    $('.summernote').summernote()
+</script>
+
+</body>
+</html>

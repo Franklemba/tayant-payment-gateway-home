@@ -13,6 +13,7 @@ const passport = require('passport')
 const homeRouter = require('./routes/home');
 // const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth')
+const merchantRouter = require('./routes/merchant');
 // const reportRouter = require('./routes/reports')
 
 // const { ensureAuthenticated} = require('./config/auth');
@@ -73,6 +74,6 @@ app.use(passport.session());
 // Routes
 app.use('/auth', authRouter);
 app.use('/',homeRouter);
-// app.use('/users', userRouter);
+app.use('/merchant', merchantRouter);
 
 app.listen(process.env.PORT || 3330, () => console.log('Server is Running on port: 3330'))

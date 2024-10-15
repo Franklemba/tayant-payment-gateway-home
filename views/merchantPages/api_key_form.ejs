@@ -1,0 +1,61 @@
+<!-- Main Content -->
+
+<section class="section">
+        <div class="section-header">
+        <h1>Api key</h1>
+        </div>
+</section>
+               <div class="row justify-content-center">
+   <div class="col-xl-10">
+       <div class="card">
+           <div class="card-header">
+               <h6>Business Api Key</h6>
+           </div>
+           <div class="card-body">
+               <div class="form-group row">
+                   <div class="col-md-3">
+                       <h6 class="mt-2">Access Key :</h6>
+                   </div>
+                   <div class="col-md-9">
+                       <input class="form-control public" data-clipboard-text="1379c57a-874c-4d0f-9ad9-e0a1d4a64bd5" type="text" value="1379c57a-874c-4d0f-9ad9-e0a1d4a64bd5" readonly>
+                   </div>
+               </div>
+               <div class="form-group row">
+                   <div class="col-md-3">
+                       <h6 class="mt-2">Service Mode :</h6>
+                   </div>
+                   <div class="col-md-9">
+                       <select class="form-control mode">
+                           <option value="0" selected>Test Mode</option>
+                           <option value="1" >Active Mode</option>
+                       </select>
+                   </div>
+               </div>
+               <div class="form-group mt-3 text-right">
+                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">Generate New</button>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+<div id="confirmModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+       <form action="/merchant/generate-api-key" method="POST">
+           <input type="hidden" name="_token" value="DYmmDWk3R3YZr4tMhlsVcbQJRjHceMj9ZYHFtgk3">                <div class="modal-content">
+               <div class="modal-body">
+                <h6>All of your previous api connection will be lost !! Are you sure to generate new api key?</h6>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                   <button type="submit" class="btn btn-primary">Confirm</button>
+               </div>
+           </div>
+       </form>
+   </div>
+</div>
+
+
+ </div>
+ 
+</div>
