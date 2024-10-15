@@ -1,0 +1,260 @@
+
+<% let title = "API Documentation"; %>
+<% let gsTitle = 'gateway'; %>
+
+<section class="documentation-section pt-100 pb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="documentation-wrapper">
+
+                    <div class="documentation-item" id="intro">
+                        <div class="documentation-header">
+                            <h3 class="title"><%= title %></h3>
+                        </div>
+                        <p>
+                            All requests to the <%= gsTitle %> API are sent via the HTTP POST method to one of our API endpoint URLs.
+
+                            <ul>
+                                <li>
+                                    HTTP Request Method: <span class="badge badge--primary">POST</span>
+                                </li>
+                                <li class="mt-2">
+                                    API Endpoint: <a href="javascript:void(0)">payment/process</a>
+                                </li>
+                                <li class="my-2">
+                                    JSON Content-Type: <span class="badge badge--warning">application/json</span>
+                                </li>
+                            </ul>
+
+                            All calls to the <%= gsTitle %> API require merchant authentication and merchant access key. <a href="merchant/register">Sign up</a> for an account to quickly get started.
+                            <br>
+                            Sandbox payment can also be initiated while the merchant sets the service mode as test in the merchant dashboard. It will be live while the mode is set as active mode.
+                        </p>
+                    </div>
+
+                    <div class="documentation-item" id="api">
+                        <div class="documentation-header">
+                            <h3 class="title">API Access Key</h3>
+                        </div>
+                        <p>
+                            Register as a merchant in our system. In your merchant dashboard, you will find the option for API access key.
+                            <br><br>
+                            Example access key: 51a4bd18-5bc1-4eaa-97b0-c09323398883
+                        </p>
+                    </div>
+
+                    <div class="documentation-item" id="payment">
+                        <div class="documentation-header">
+                            <h3 class="title">Payment Transaction Initiate</h3>
+                        </div>
+                        <p>
+                            The following example code enables you to initiate a payment, depending on how you structure it. The parameter details are also below.
+                        </p>
+
+                        <table class="table table-bordered text-center bg--section mb-4">
+                            <thead class="bg--base">
+                                <tr>
+                                    <th class="text--white">Param Name</th>
+                                    <th class="text--white">Param Type</th>
+                                    <th class="text--white">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>custom</td>
+                                    <td>string</td>
+                                    <td>Identification of your end <span class="badge badge--danger">Required</span></td>
+                                </tr>
+                                <tr>
+                                    <td>amount</td>
+                                    <td>decimal</td>
+                                    <td>The amount you want to transaction <span class="badge badge--danger">Required</span></td>
+                                </tr>
+                                <tr>
+                                    <td>details</td>
+                                    <td>string</td>
+                                    <td>Purchase details <span class="badge badge--danger">String Max 255</span></td>
+                                </tr>
+                                <tr>
+                                    <td>web_hook</td>
+                                    <td>string</td>
+                                    <td>Instant payment notification URL <span class="badge badge--danger">Required</span></td>
+                                </tr>
+                                <tr>
+                                    <td>cancel_url</td>
+                                    <td>string</td>
+                                    <td>Payment cancel return URL <span class="badge badge--danger">Required</span></td>
+                                </tr>
+                                <tr>
+                                    <td>success_url</td>
+                                    <td>string</td>
+                                    <td>Payment success return URL <span class="badge badge--danger">Required</span></td>
+                                </tr>
+                                <tr>
+                                    <td>customer_email</td>
+                                    <td>string</td>
+                                    <td>Customer email address <span class="badge badge--danger">Required</span></td>
+                                </tr>
+                                <tr>
+                                    <td>access_key</td>
+                                    <td>string</td>
+                                    <td>Send access_key as bearer token with header <span class="badge badge--danger">Required</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <pre class="mb-0">
+                            <button class="copy-btn" data-clipboard-target="#php-code">Copy</button>
+                            <code class="language-php" id="php-code">
+&lt;?php
+    $parameters = [
+        'custom' => 'DFU80XZIKS',
+        'currency_code' => 'USD',
+        'amount' => 280.00,
+        'details' => 'Digital Product',
+        'web_hook' => 'http://yoursite.com/web_hook.php',
+        'cancel_url' => 'http://yoursite.com/cancel_url.php',
+        'success_url' => 'http://yoursite.com/success_url.php',
+        'customer_email' => 'customer@mail.com',
+    ];
+    
+    $url = 'http://yourwallet.com/payment/process';
+    
+    $headers = [
+        "Accept: application/json",
+        "Authorization: Bearer access_key",
+    ];
+    
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,  http_build_query($parameters));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+?&gt;
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="documentation-item" id="payment-response">
+                        <div class="documentation-header">
+                            <h3 class="title">Example Response after initiating payment</h3>
+                        </div>
+                        <pre class="mb-0">
+                            <code class="language-php" id="response-code">
+                                //Success Response.
+                                {
+                                    "code": 200,
+                                    "status": "ok",
+                                    "payment_id": "AIYmQIOAz0GlmsjfhgiOeu304",
+                                    "message": "Your payment has been processed. Please follow the URL to complete the payment.",
+                                    "url": "/process-checkout?payment_id=AIYmQIOAz0GlmsjfhgiOeu304"
+                                }
+
+                                //Error Response.
+                                {
+                                    "code": 401,
+                                    "status": "error",
+                                    "message": "Invalid API credentials."
+                                }
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="documentation-item" id="successful-payment-response">
+                        <div class="documentation-header">
+                            <h3 class="title">Response after successful payment</h3>
+                        </div>
+                        <pre class="mb-0">
+                            <code class="language-php" id="success-response-code">
+                                //Success Response.
+                                {
+                                    "code": 200,
+                                    "status": "ok",
+                                    "payment_id": "AIYmQIOAz0GlmsjfhgiOeu304",
+                                    "transaction": "AIYmQIOAz0G",
+                                    "amount": 100.00,
+                                    "charge": 5.00,
+                                    "currency": "USD",
+                                    "custom": "BVSUZ545XCS",
+                                    "date": "22-05-2022"
+                                }
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="documentation-item" id="verify-payment">
+                        <div class="documentation-header">
+                            <h3 class="title">Verify Payment</h3>
+                        </div>
+                        <p>
+                            You can verify whether the payment is valid or not. After a successful payment transaction, you will have the response where you find the Payment ID. With this payment ID and your access key, you need to make a request to our server to verify the payment. Example code is below.
+                            <br><br>
+                            <span>Payment verify endpoint: <a href="javascript:void(0)">payment/check-validity</a></span>
+                        </p>
+
+                        <pre class="mb-0">
+                            <button class="ver-btn copy-btn" data-clipboard-target="#ver-code">Copy</button>
+                            <code class="language-php" id="ver-code">
+&lt;?php
+    $parameters = [
+        'payment_id' => 'AIYmQIOAz0GlmsjfhgiOeu304',
+    ];
+
+    $url = 'payment/check-validity';
+
+    $headers = [
+        "Accept: application/json",
+        "Authorization: Bearer access_key",
+    ];
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+?&gt;
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="documentation-item" id="response-verification">
+                        <div class="documentation-header">
+                            <h3 class="title">Response Verification</h3>
+                        </div>
+                        <pre class="mb-0">
+                            <code class="language-php" id="ver-response-code">
+                                //Success Response.
+                                {
+                                    "code": 200,
+                                    "status": "ok",
+                                    "payment_id": "AIYmQIOAz0GlmsjfhgiOeu304",
+                                    "transaction": "AIYmQIOAz0G",
+                                    "amount": 100.00,
+                                    "charge": 5.00,
+                                    "currency": "USD",
+                                    "custom": "BVSUZ545XCS",
+                                    "date": "22-05-2022"
+                                }
+
+                                //Error Response.
+                                {
+                                    "code": 404,
+                                    "status": "error",
+                                    "message": "Payment not found."
+                                }
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

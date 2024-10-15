@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Site Title - Page Title</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.min.css" />
+    <link rel="stylesheet" href="assets/css/odometer.css" />
+    <link rel="stylesheet" href="assets/css/owl.min.css" />
+    <link rel="stylesheet" href="assets/css/default.min.css">
+    <link href="assets/css/main.css?color=your-theme-color" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="path/to/your/favicon.ico">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#documentation" data-bs-offset="0" tabindex="0">
+
+    <div class="overlayer"></div>
+
+    <!-- Header -->
+   <!-- Header -->
+<div class="navbar-top bg--base">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-evenly justify-content-md-between">
+            <ul class="social-icons py-1 py-md-0">
+                <!-- Replace with your actual social media links and icons -->
+                <li>
+                    <a target="_blank" href="https://example.com"><i class="fab fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://example.com"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://example.com"><i class="fab fa-instagram"></i></a>
+                </li>
+                <!-- Add more social links as needed -->
+            </ul>
+            <ul class="contact-bar py-1 py-md-0">
+                <li>
+                    <a href="Tel:+123456789">+123456789</a> <!-- Replace with actual phone number -->
+                </li>
+                <li>
+                    <a href="mailto:example@example.com">example@example.com</a> <!-- Replace with actual email -->
+                </li>
+                <li>
+                    <div class="change-language d-none d-sm-block">
+                        <select class="language-bar" onchange="window.location.href=this.value">
+                            <option value="#en">English</option>
+                            <option value="#fr">French</option>
+                            <!-- Add more languages as needed -->
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="navbar-bottom">
+    <div class="container">
+        <div class="navbar-wrapper">
+            <div class="logo">
+                <a href="/">
+                    <img src="path/to/logo.png" alt="logo" /> <!-- Replace with actual logo path -->
+                </a>
+            </div>
+            <div class="change-language d-sm-none ms-auto me-3 text--title">
+                <select class="language-bar" onchange="window.location.href=this.value">
+                    <option value="#en">English</option>
+                    <option value="#fr">French</option>
+                    <!-- Add more languages as needed -->
+                </select>
+            </div>
+            <div class="nav-toggle d-lg-none">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-menu-area">
+                <div class="menu-close text--danger d-lg-none">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ul class="nav-menu">
+                    <li>
+                        <a target="_self" href="/">Home</a> <!-- Replace with actual menu item -->
+                    </li>
+                    <li>
+                        <a target="_self" href="/about">About Us</a> <!-- Replace with actual menu item -->
+                    </li>
+                    <li>
+                        <a target="_self" href="/apiDocumentation">API</a> <!-- Replace with actual menu item -->
+                    </li>
+                    <li>
+                        <a target="_self" href="/blogs">Blogs</a> <!-- Replace with actual menu item -->
+                    </li>
+                    <li>
+                        <a target="_self" href="/services">Services</a> <!-- Replace with actual menu item -->
+                    </li>
+                    <li>
+                        <a target="_self" href="/contact">Contact</a> <!-- Replace with actual menu item -->
+                    </li>
+                    <!-- Add more menu items as needed -->
+
+                    <!-- <li>
+                        <div class="btn__grp ms-lg-3">
+                            <a href="/user/dashboard" class="cmn--btn">Dashboard</a>
+                            <a href="/user/logout" class="cmn--btn btn-outline">Logout</a>
+                        </div>
+                    </li> -->
+                    <li>
+                        <div class="btn__grp ms-lg-3">
+                            <a href="/user/login" class="cmn--btn">Login</a>
+                            <a href="/user/register" class="cmn--btn btn-outline">Register</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header -->
+
+    <!-- Main Content -->
+    <main>
+        <!-- Include your main content HTML here -->
+        <%- body %>
+    </main>
+
+
+    <!-- Footer -->
+   <!-- Footer -->
+<footer class="position-relative overflow-hidden">
+    <div class="footer-top bg--section">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-widget">
+                    <h5 class="footer-title">Menu</h5>
+                    <ul>
+                        <li>
+                            <a target="_self" href="/about">About Us</a>
+                        </li>
+                        <li>
+                            <a target="_self" href="/services">Services</a>
+                        </li>
+                        <li>
+                            <a target="_self" href="/contact">Contact</a>
+                        </li>
+                        <li>
+                            <a target="_self" href="/blog">Blog</a>
+                        </li>
+                        <!-- Add more menu items as needed -->
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h5 class="footer-title">Get Started</h5>
+                    <ul>
+                        <li>
+                            <a href="/user/register">Register as User</a>
+                        </li>
+                        <li>
+                            <a href="/user/login">Login as User</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/register">Register as Merchant</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/login">Login as Merchant</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h5 class="footer-title">Pages</h5>
+                    <ul>
+                        <li>
+                            <a href="/faq">Frequently Asked Questions</a>
+                        </li>
+                        <li>
+                            <a href="/page/1/example-page">Example Page</a> <!-- Replace with actual page link -->
+                        </li>
+                        <li>
+                            <a href="/page/2/another-page">Another Page</a> <!-- Replace with actual page link -->
+                        </li>
+                        <!-- Add more page links as needed -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom bg--body py-4">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center justify-content-sm-between bottom-menu-wrapper">
+                <div class="footer-logo">
+                    <a href="/">
+                        <img src="path/to/logo.png" alt="logo"> <!-- Replace with actual logo path -->
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; All Right Reserved by <a href="/" class="text--base">Your Site Title</a> <!-- Replace with actual site title -->
+                </div>
+                <ul class="bottom-menu">
+                    <li>
+                        <a href="/terms/1/terms-and-conditions">Terms and Conditions</a> <!-- Replace with actual terms link -->
+                    </li>
+                    <li>
+                        <a href="/privacy-policy">Privacy Policy</a> <!-- Replace with actual privacy policy link -->
+                    </li>
+                    <!-- Add more policy links as needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <span class="banner-elem elem3">&nbsp;</span>
+    <span class="banner-elem elem5">&nbsp;</span>
+    <span class="banner-elem elem6">&nbsp;</span>
+    <span class="banner-elem elem8">&nbsp;</span>
+</footer>
+<!-- Footer -->
+
+
+    <!-- Start of Tawk.to Script -->
+    <script type="text/javascript">
+        'use strict';
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = "https://embed.tawk.to/your-tawk-id";
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!-- End of Tawk.to Script -->
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+    <script src="assets/js/owl.min.js"></script>
+    <script src="assets/js/tilt.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- Include your notification alert script here -->
+    <!-- Include any additional scripts here -->
+
+</body>
+
+</html>

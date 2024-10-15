@@ -1,0 +1,6 @@
+<% sections.forEach(section => { %>
+    <% if (section.status === 1) { %>
+        <!-- Include the section based on its slug -->
+        <%- include(`../sections/${section.slug}`) %>
+    <% } %>
+<% }); %>

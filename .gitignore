@@ -1,0 +1,5 @@
+# development folder
+frontend
+node_modules
+frontend.blade.php
+package-lock.json
