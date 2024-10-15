@@ -38,6 +38,19 @@ router.get("/apiDocumentation", (req,res) => {
 
 
 
+router.get("/blog", (req,res) => {
+  res.render("pages/blog",{
+      sections
+    })
+})
+
+
+router.get("/contact", (req,res) => {
+  res.render("pages/contact",{
+      sections
+    })
+})
+
 
 module.exports = router;
   
