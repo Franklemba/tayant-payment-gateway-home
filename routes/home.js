@@ -44,6 +44,12 @@ router.get("/blog", (req,res) => {
     })
 })
 
+router.get("/pricing", (req,res) => {
+  res.render("homePages/pricing",{
+      sections
+    })
+})
+
 
 router.get("/contact", (req,res) => {
   res.render("homePages/contact",{
