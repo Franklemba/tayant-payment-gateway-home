@@ -1,0 +1,172 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Withdraw Money</h1>
+    </div>
+</section>
+
+        <div class="card">
+            <div class="card-body">
+                <form id="withdrawForm">
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <div class="form-label">Amount : <code class="limit"></code></div>
+                            <input type="text" name="amount" id="amount" class="form-control shadow-none mb-2" required>
+                            <small class="text-warning charge"></small>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-label">Select Wallet</div>
+                            <select class="form-control wallet shadow-none" name="wallet_id">
+                                <option value="" selected>Select</option>
+                                <option value="1" data-currency="1" data-code="USD">USD -- (1000.00)</option>
+                                <option value="2" data-currency="2" data-code="EUR">EUR -- (500.00)</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-label">Select Withdraw Method</div>
+                            <select class="form-control method shadow-none" name="method_id" disabled>
+                                <option value="" selected>Select</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 my-3 info d-none">
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item d-flex justify-content-between font-weight-bold">Withdraw Amount : <span class="exAmount"></span></li>
+                                <li class="list-group-item d-flex justify-content-between font-weight-bold">Total Charge : <span class="exCharge"></span></li>
+                                <li class="list-group-item d-flex justify-content-between font-weight-bold">Total Amount : <span class="total_amount"></span></li>
+                            </ul>
+
+                            <div class="mt-4 text-center">
+                                <h5 class="text-danger">Withdraw instruction</h5>
+                                <p class="instruction mt-2"></p>
+                            </div>
+
+                            <div class="mt-3 text-center">
+                                <h5 class="text-danger">Provide your withdraw account details.</h5>
+                                <textarea name="user_data" id="user_data" class="form-control shadow-none" cols="30" rows="10" required></textarea>
+                            </div>
+                        </div>
+                      
+                        <div class="col-md-12 mb-3">
+                            <div class="form-label">&nbsp;</div>
+                            <a href="#" class="btn btn-primary w-100 confirm">Confirm</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center py-4">
+                        <h6>Confirm Withdraw?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary confirm-withdraw">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const walletSelect = document.querySelector('.wallet');
+            const methodSelect = document.querySelector('.method');
+            const amountInput = document.getElementById('amount');
+            const confirmBtn = document.querySelector('.confirm');
+            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+
+            function toast(type, message) {
+                alert(message); // Replace with a proper toast notification
+            }
+
+            walletSelect.addEventListener('change', function() {
+                if (amountInput.value === '') {
+                    toast('error', 'Please provide the amount first.');
+                    return;
+                }
+
+                // Simulating AJAX call to get withdraw methods
+                setTimeout(() => {
+                    methodSelect.innerHTML = `
+                        <option value="">Select</option>
+                        <option value="1" data-min="10" data-max="1000" data-fixed="2" data-percent="1" data-ins="Transfer to bank account">Bank Transfer</option>
+                        <option value="2" data-min="5" data-max="500" data-fixed="1" data-percent="0.5" data-ins="Transfer to PayPal account">PayPal</option>
+                    `;
+                    methodSelect.disabled = false;
+                }, 500);
+            });
+
+            methodSelect.addEventListener('change', function() {
+                const selectedMethod = methodSelect.options[methodSelect.selectedIndex];
+                const selectedWallet = walletSelect.options[walletSelect.selectedIndex];
+                const amount = parseFloat(amountInput.value);
+
+                if (selectedMethod.value === '' || !amount || selectedWallet.value === '') {
+                    document.querySelector('.info').classList.add('d-none');
+                    return;
+                }
+
+                const min = parseFloat(selectedMethod.dataset.min);
+                const max = parseFloat(selectedMethod.dataset.max);
+                const fixed = parseFloat(selectedMethod.dataset.fixed);
+                const percent = parseFloat(selectedMethod.dataset.percent);
+                const code = selectedWallet.dataset.code;
+
+                const totalCharge = fixed + (amount * (percent / 100));
+
+                document.querySelector('.limit').textContent = `Min: ${min} ${code} --- Max: ${max} ${code}`;
+                document.querySelector('.charge').textContent = `Total Charge: ${fixed} ${code} + ${percent}%`;
+
+                if (min > amount || max < amount) {
+                    toast('error', 'Please follow the limit');
+                    return;
+                }
+
+                document.querySelector('.info').classList.remove('d-none');
+                document.querySelector('.exAmount').textContent = `${amount} ${code}`;
+                document.querySelector('.exCharge').textContent = `${totalCharge.toFixed(2)} ${code}`;
+                document.querySelector('.total_amount').textContent = `${(amount + totalCharge).toFixed(2)} ${code}`;
+                document.querySelector('.instruction').innerHTML = selectedMethod.dataset.ins;
+            });
+
+            confirmBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (validateForm()) {
+                    modal.show();
+                }
+            });
+
+            document.querySelector('.confirm-withdraw').addEventListener('click', function() {
+                // Here you would typically submit the form or make an AJAX call
+                alert('Withdraw request submitted!');
+                modal.hide();
+            });
+
+            function validateForm() {
+                if (methodSelect.value === '') {
+                    toast('error', 'Please select the withdraw method first.');
+                    return false;
+                }
+                if (amountInput.value === '') {
+                    toast('error', 'Please provide the amount first.');
+                    return false;
+                }
+                if (walletSelect.value === '') {
+                    toast('error', 'Please select the wallet first.');
+                    return false;
+                }
+                if (document.getElementById('user_data').value === '') {
+                    toast('error', 'Please provide the withdraw details.');
+                    return false;
+                }
+                return true;
+            }
+        });
+    </script>

@@ -51,6 +51,12 @@ router.get("/contact", (req,res) => {
     })
 })
 
+router.get("/faq", (req,res) => {
+  res.render("homePages/faq",{
+      sections
+    })
+})
+
 
 module.exports = router;
   

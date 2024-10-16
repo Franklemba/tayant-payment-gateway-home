@@ -1,0 +1,118 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Transactions</h1>
+    </div>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <form action="" class="row justify-content-md-end flex-grow-1">
+                    <div class="col-12 col-md-6 col-xl-3 mb-2">
+                        <select class="form-control w-100" onChange="window.location.href=this.value">
+                            <option value="#">Select Remark</option>
+                            <option value="#">Merchant Payment</option>
+                            <option value="#">Merchant API Payment</option>
+                            <option value="#">Withdraw Money</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-3 mb-2">
+                        <div class="input-group has_append w-100">
+                            <input type="text" class="form-control" placeholder="Transaction ID" value="" />
+                            <div class="input-group-append">
+                                <button class="input-group-text bg-primary border-0">
+                                    <i class="fas fa-search text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body text-center">
+                <div class="table-responsive">
+                    <table class="table card-table table-vcenter text-nowrap datatable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Transaction ID</th>
+                                <th>Description</th>
+                                <th>Remark</th>
+                                <th>Amount</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01-Jan-2024</td>
+                                <td>TRX123456</td>
+                                <td>Payment for services</td>
+                                <td><span class="badge badge-dark">Merchant Payment</span></td>
+                                <td><span class="text-success">+ $100.00 USD</span></td>
+                                <td class="text-end">
+                                    <button class="btn btn-primary btn-sm details" data-id="1">Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="12">No data found!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="pagination">
+                <!-- Pagination links can go here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center py-4">
+                <h3>Transaction Details</h3>
+                <p class="trx_details"></p>
+                <ul class="list-group mt-2"></ul>
+            </div>
+            <div class="modal-footer">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col">
+                            <a href="#" class="btn w-100 btn-dark" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add your script dependencies -->
+<script src="/path_to_jquery.js"></script> <!-- Make sure to include your JS files -->
+<script>
+    'use strict';
+
+    document.querySelectorAll('.details').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var url = "/merchant/transaction/details/" + button.getAttribute('data-id');
+            document.querySelector('.trx_details').innerText = "Transaction details for TRX123456"; // Placeholder text
+            fetch(url)
+                .then(response => response.text())
+                .then(res => {
+                    if (res === 'empty') {
+                        document.querySelector('.list-group').innerHTML = '<p>No details found!</p>';
+                    } else {
+                        document.querySelector('.list-group').innerHTML = res;
+                    }
+                    $('#modal-success').modal('show');
+                });
+        });
+    });
+</script>
+
+<style>
+    .form-control {
+        height: calc(1.8em + 0.75rem + 2px);
+    }
+</style>

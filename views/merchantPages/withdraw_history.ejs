@@ -1,0 +1,94 @@
+<section class="section">
+    <div class="section-header justify-content-between">
+        <h1>Withdraw History</h1>
+        <form action="" method="get">
+            <div class="input-group">
+                <input type="text" name="search" value="" class="form-control" placeholder="Transaction">
+                <div class="input-group-append">
+                    <button class="input-group-text bg-primary text-white" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Table Section -->
+<div class="container-xl">
+    <div class="row row-deck row-cards">
+        <div class="col-12">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-vcenter card-table table-striped table--responsive">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Amount</th>
+                                <th>Charge</th>
+                                <th>Total Amount</th>
+                                <th>Method Name</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Replace with your static or dynamic data -->
+                            <tr>
+                                <td data-label="Transaction">123456789</td>
+                                <td data-label="Amount">100.00 USD</td>
+                                <td data-label="Charge">5.00 USD</td>
+                                <td data-label="Total Amount">95.00 USD</td>
+                                <td data-label="Method Name">Bank Transfer</td>
+                                <td data-label="Status">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <span class="badge bg-success m-1">Accepted</span>
+                                        <!-- Or use rejected or pending depending on your logic -->
+                                        <!-- <span class="badge badge-danger m-1">Rejected</span> -->
+                                        <!-- <button class="btn btn-sm bg-dark text-white reason m-1" data-bs-toggle="modal" data-bs-target="#modal-team" data-reason="Insufficient funds"><i class="fas fa-info"></i></button> -->
+                                        <!-- <span class="badge badge-warning m-1">Pending</span> -->
+                                    </div>
+                                </td>
+                                <td data-label="Date">2023-10-15</td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                    <!-- Pagination can go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Section for Rejection Reasons -->
+<div class="modal modal-blur fade" id="modal-team" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reject Reasons</h5>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <textarea class="form-control reject-reason" rows="5" disabled></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark ms-auto" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="path-to-your-js"></script>
+<script>
+    'use strict';
+    document.querySelectorAll('.reason').forEach(function (el) {
+        el.addEventListener('click', function () {
+            var reason = el.getAttribute('data-reason');
+            document.querySelector('#modal-team .reject-reason').value = reason;
+            new bootstrap.Modal(document.getElementById('modal-team')).show();
+        });
+    });
+</script>

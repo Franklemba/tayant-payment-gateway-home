@@ -2,7 +2,7 @@
     <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>
         <li class="nav-item">
-          <a href="/merchant" class="nav-link"><i class="fab fa-fire"></i><span>Dashboard</span></a>
+          <a href="/merchant/dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
         </li>
         
         <li class="nav-item">
@@ -21,29 +21,110 @@
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-university"></i> <span>Withdraw</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="/merchant/withdraw/form">Withdraw Money</a></li>
-            <li><a class="nav-link" href="/merchant/withdraw/history">Withdraw History</a></li>
+            <li><a class="nav-link" href="/merchant/withdraw-money">Withdraw Money</a></li>
+            <li><a class="nav-link" href="/merchant/withdraw-history">Withdraw History</a></li>
           </ul>
         </li>
   
         <li class="menu-header">Setting</li>
         <li class="nav-item">
-          <a href="/merchant/profile/setting" class="nav-link"><i class="fab fa-user"></i><span>Profile Setting</span></a>
+          <a href="/auth/profile-setting" class="nav-link"><i class="fas fa-user"></i><span>Profile Setting</span></a>
         </li>
         <li class="nav-item">
-          <a href="/merchant/change/password" class="nav-link"><i class="fas fa-key"></i><span>Change Password</span></a>
+          <a href="/auth/change-password" class="nav-link"><i class="fas fa-key"></i><span>Change Password</span></a>
         </li>
         <li class="nav-item">
-          <a href="/merchant/two/step" class="nav-link"><i class="fas fa-lock"></i><span>Two Step Security</span></a>
+          <a href="/auth/two-step" class="nav-link"><i class="fas fa-lock"></i><span>Two Step Security</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="/merchant/ticket/index" class="nav-link"><i class="fas fa-ticket-alt"></i><span>Support Ticket</span></a>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a href="/merchant/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a>
+          <a href="/auth/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a>
         </li>
     </ul>
   </aside>
 
+
+  <style>
+    #sidebar-wrapper {
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+    .sidebar-menu {
+        list-style-type: none;
+        padding: 0;
+    }
+    .menu-header {
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    .nav-item {
+        margin-bottom: 5px;
+    }
+    .nav-link {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    .nav-link:hover, .nav-link.active {
+        background-color: #e0e0e0;
+        color: #6777ef !important;
+    }
+    .nav-link.active {
+        font-weight: bold;
+    }
+    .nav-link i {
+        margin-right: 10px;
+    }
+    .dropdown-menu {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+</style>
+
+
   
-  
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Get current page URL
+      const currentPage = window.location.pathname;
+
+      // Find all nav links
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      // Function to check if a link matches the current page
+      function isCurrentPage(link) {
+          // Check for exact match
+          if (link.getAttribute('href') === currentPage) {
+              return true;
+          }
+          // Check if current page is a sub-page of the link
+          if (currentPage.startsWith(link.getAttribute('href')) && link.getAttribute('href') !== '/') {
+              return true;
+          }
+          return false;
+      }
+
+      // Loop through nav links
+      navLinks.forEach(link => {
+          // Check if link matches current page
+          if (isCurrentPage(link)) {
+              link.classList.add('active');
+          }
+
+          // Add hover effect
+          link.addEventListener('mouseenter', function() {
+              this.classList.add('active');
+          });
+          link.addEventListener('mouseleave', function() {
+              if (!isCurrentPage(this)) {
+                  this.classList.remove('active');
+              }
+          });
+      });
+  });
+</script>
