@@ -4,5 +4,5 @@ node_modules
 frontend.blade.php
 merchant.blade.php
 package-lock.json
-merchant
+merchantFolder
 merchant_payment
